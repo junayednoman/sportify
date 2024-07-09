@@ -12,6 +12,11 @@
 * {
   color: #3e3e3e;
 }
+
+a{
+  font-weight: 500 !important;
+  display: inline-block;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;
