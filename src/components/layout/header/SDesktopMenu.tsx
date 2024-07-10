@@ -8,7 +8,7 @@ const SDesktopMenu = () => {
   return (
     <>
       <div className=" lg:block hidden">
-        <div className="flex items-center gap-5 capitalize text-[15px] font-medium">
+        <div className="flex items-center gap-5 capitalize text-[15px] font-semibold">
           <Link to={"/"}>home</Link>
           <Link to={"/products"}>all products</Link>
           <Link to={"/manage-products"}>manage products</Link>

@@ -9,14 +9,26 @@
   font-style: normal;
 }
 
-* {
+body {
   color: #3e3e3e;
 }
 
-a {
+/* style for section title */
+
+.section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 30%; /* Adjust the width of the border */
+  height: 3px; /* Adjust the height of the border */
+  background-color: #83b828; /* Adjust the color of the border */
+}
+
+/* a {
   font-weight: 500 !important;
   display: inline-block;
-}
+} */
 .text-bordered {
   /* Adjust the size as needed */
   font-weight: bold;
@@ -28,14 +40,18 @@ a {
   background-clip: text;
 }
 
-.banner-1{
+.readonly_rating {
+  color: #83b828 !important;
+}
+
+.banner-1 {
   background-image: url(./assets/images/banner-1.jpg);
 }
 
-.banner-2{
+.banner-2 {
   background-image: url(./assets/images/banner-2.jpg);
 }
-.banner-3{
+.banner-3 {
   background-image: url(./assets/images/banner-3.jpg);
 }
 
