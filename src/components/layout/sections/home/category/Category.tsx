@@ -1,10 +1,10 @@
 import SectionHeader from "@/components/ui/SectionHeader";
-import SectionContainer from "../../SectionContainer";
 import cricketImg from "@/assets/images/cricket.png";
 import footballImg from "@/assets/images/football.png";
 import badmintonImg from "@/assets/images/badminton.png";
 import basketballImg from "@/assets/images/basketball.png";
 import CategoryItem from "./CategoryItem";
+import SectionContainer from "@/components/layout/SectionContainer";
 
 const Category = () => {
   return (

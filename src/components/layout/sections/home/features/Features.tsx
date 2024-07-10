@@ -1,9 +1,9 @@
-import SContainer from "../../SContainer";
-import SectionContainer from "../../SectionContainer";
 import FeatureItem from "./FeatureItem";
 import deliveryImage from "@/assets/images/fast.png";
 import moneyImage from "@/assets/images/cash-on-delivery.png";
 import supportImage from "@/assets/images/support.png";
+import SectionContainer from "@/components/layout/SectionContainer";
+import SContainer from "@/components/layout/SContainer";
 
 const Features = () => {
   return (

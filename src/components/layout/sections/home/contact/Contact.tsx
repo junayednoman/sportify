@@ -1,6 +1,6 @@
-import SContainer from "../../SContainer";
-import SectionContainer from "../../SectionContainer";
+import SectionContainer from "@/components/layout/SectionContainer";
 import ContactForm from "./ContactForm";
+import SContainer from "@/components/layout/SContainer";
 
 const Contact = () => {
   return (

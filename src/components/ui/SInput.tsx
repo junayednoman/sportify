@@ -30,7 +30,7 @@ const SInput = ({
         type={type ? type : "text"}
         {...register(inputName)}
         className={`mt-1 ${
-          error && "outline-red-600 outline "
+          error && "outline-red-600 outline-2 outline "
         }focus:outline-red-600 focus:outline`}
       />
       {error && <p className="text-red-600 text-xs mt-1">{error?.message}</p>}

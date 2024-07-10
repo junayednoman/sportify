@@ -3,7 +3,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import BannerItem from "./banner/BannerItem";
+import BannerItem from "./home/banner/BannerItem";
 import Autoplay from "embla-carousel-autoplay";
 import SContainer from "../SContainer";
 

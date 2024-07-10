@@ -1,8 +1,8 @@
 import Banner from "@/components/layout/sections/Banner";
-import Category from "@/components/layout/sections/category/Category";
-import Contact from "@/components/layout/sections/contact/Contact";
-import Featured from "@/components/layout/sections/featured/Featured";
-import Features from "@/components/layout/sections/features/Features";
+import Category from "@/components/layout/sections/home/category/Category";
+import Contact from "@/components/layout/sections/home/contact/Contact";
+import Featured from "@/components/layout/sections/home/featured/Featured";
+import Features from "@/components/layout/sections/home/features/Features";
 import { Helmet } from "react-helmet";
 
 const Home = () => {

@@ -3,11 +3,11 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import ProductCard from "../../product card/ProductCard";
-import SectionContainer from "../../SectionContainer";
 import Autoplay from "embla-carousel-autoplay";
 import SectionHeader from "@/components/ui/SectionHeader";
-import SContainer from "../../SContainer";
+import SContainer from "@/components/layout/SContainer";
+import SectionContainer from "@/components/layout/SectionContainer";
+import ProductCard from "@/components/layout/product card/ProductCard";
 
 const products = [
   {

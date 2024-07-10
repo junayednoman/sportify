@@ -1,13 +1,16 @@
+import CommonBanner from "@/components/layout/CommonBanner";
+import About from "@/components/layout/sections/about/About";
 import { Helmet } from "react-helmet";
-const About = () => {
+const AboutPage = () => {
   return (
     <div>
       <Helmet>
         <title>About Us - Sportify | Equip your game</title>
       </Helmet>
-      <h1>This is, About component!</h1>
+      <CommonBanner title="About Sportify" />
+      <About />
     </div>
   );
 };
 
-export default About;
+export default AboutPage;

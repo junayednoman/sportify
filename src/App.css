@@ -1,0 +1,14 @@
+@media (max-width: 479px) {
+  .content_wrap,
+  .content_container {
+    width: 95% !important;
+  }
+
+  .search_wrap.search_style_normal.search_mobile {
+    display: none !important;
+  }
+
+  .socials_mobile {
+    display: none !important;
+  }
+}

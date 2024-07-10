@@ -63,7 +63,8 @@ const ContactForm = () => {
           </label>
           <Textarea
             className={`${
-              methods.formState.errors.message && "outline-red-600 outline "
+              methods.formState.errors.message &&
+              "outline-red-600 outline-2 outline "
             }`}
             rows={6}
             {...methods.register("message")}
