@@ -11,11 +11,22 @@ const Category = () => {
     <div>
       <SectionContainer>
         <SectionHeader title="Shop by category" align="center" />
-        <div className="flex items-center gap-4 justify-center flex-wrap md:flex-row flex-col">
-          <CategoryItem heading={"cricket accesories"} image={cricketImg} />
-          <CategoryItem heading={"football goods"} image={footballImg} />
-          <CategoryItem heading={"badminton accesories"} image={badmintonImg} />
-          <CategoryItem heading={"basketball goods"} image={basketballImg} />
+        <div className="flex items-center gap-6 justify-center flex-wrap sm:flex-row flex-col">
+          <div className="xl:w-[15%] lg:w-[22%] md:w-[35%] sm:w-[40%] w-[70%] h-auto">
+            <CategoryItem heading={"cricket accesories"} image={cricketImg} />
+          </div>
+          <div className="xl:w-[15%] lg:w-[22%] md:w-[35%] sm:w-[40%] w-[70%] h-auto">
+            <CategoryItem heading={"football goods"} image={footballImg} />
+          </div>
+          <div className="xl:w-[15%] lg:w-[22%] md:w-[35%] sm:w-[40%] w-[70%] h-auto">
+            <CategoryItem
+              heading={"badminton accesories"}
+              image={badmintonImg}
+            />
+          </div>
+          <div className="xl:w-[15%] lg:w-[22%] md:w-[35%] sm:w-[40%] w-[70%] h-auto">
+            <CategoryItem heading={"basketball goods"} image={basketballImg} />
+          </div>
         </div>
       </SectionContainer>
     </div>
