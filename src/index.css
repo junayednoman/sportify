@@ -13,10 +13,32 @@
   color: #3e3e3e;
 }
 
-a{
+a {
   font-weight: 500 !important;
   display: inline-block;
 }
+.text-bordered {
+  /* Adjust the size as needed */
+  font-weight: bold;
+  color: transparent;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: #ffffff; /* Border color */
+  background: #83b828; /* Gradient color */
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.banner-1{
+  background-image: url(./assets/images/banner-1.jpg);
+}
+
+.banner-2{
+  background-image: url(./assets/images/banner-2.jpg);
+}
+.banner-3{
+  background-image: url(./assets/images/banner-3.jpg);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

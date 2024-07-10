@@ -4,7 +4,7 @@ const ManageProducts = () => {
   return (
     <div>
       <Helmet>
-        <title>Manage All Products - Sportify | Equip your game</title>
+        <title>Manage Products - Sportify | Equip your game</title>
       </Helmet>
       <h1>This is, ManageProducts component!</h1>
     </div>

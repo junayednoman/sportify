@@ -9,7 +9,7 @@ const Header = () => {
     <header className="font-futura font-medium">
       {/* topbar */}
       <Topbar />
-      <div className="border-b">
+      <div className="border-b  top-0 left-0">
         <SContainer>
           <div className="flex items-center justify-between md:py-6 py-4">
             <Link to={"/"}>

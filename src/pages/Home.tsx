@@ -1,3 +1,4 @@
+import Banner from "@/components/layout/sections/Banner";
 import { Helmet } from "react-helmet";
 
 const Home = () => {
@@ -6,7 +7,7 @@ const Home = () => {
       <Helmet>
         <title>Sportify | Equip your game</title>
       </Helmet>
-      <h1>This is, Home component!</h1>
+      <Banner />
     </div>
   );
 };

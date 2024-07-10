@@ -5,15 +5,15 @@ import Footer from "../footer/Footer";
 
 const MainLayout = () => {
   return (
-    <>
+    <div className="font-futura">
       <Header />
       <SContainer>
-        <div className="mt-12 min-h-[550px]">
+        <div className="min-h-[550px]">
           <Outlet />
         </div>
       </SContainer>
       <Footer />
-    </>
+    </div>
   );
 };
 
