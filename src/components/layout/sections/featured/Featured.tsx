@@ -7,6 +7,7 @@ import ProductCard from "../../product card/ProductCard";
 import SectionContainer from "../../SectionContainer";
 import Autoplay from "embla-carousel-autoplay";
 import SectionHeader from "@/components/ui/SectionHeader";
+import SContainer from "../../SContainer";
 
 const products = [
   {
@@ -117,65 +118,42 @@ const products = [
 
 const Featured = () => {
   return (
-    <div className="py-2">
-      <SectionContainer>
-        <SectionHeader title="Featured Products" />
-        {/* <Carousel>
-          <CarouselContent>
-            <CarouselItem>
+    <div className="py-2 bg-lightWhiteColor">
+      <SContainer>
+        <SectionContainer>
+          <SectionHeader title="Featured Products" />
+          <Carousel
+            plugins={[
+              Autoplay({
+                delay: 2000,
+                stopOnInteraction: true,
+              }),
+            ]}
+          >
+            <CarouselContent className="md:-ml-1 -ml-4">
               {products.map((product, index) => (
-                <ProductCard
+                <CarouselItem
                   key={index}
-                  tag={product.tag}
-                  name={product.name}
-                  category={product.category}
-                  quantity={product.quantity}
-                  brand={product.brand}
-                  rating={product.rating}
-                  price={product.price}
-                  description={product.description}
-                  image={product.image}
-                />
+                  className="md:pl-5 md:basis-1/2 lg:basis-1/4"
+                >
+                  <ProductCard
+                    key={index}
+                    tag={product.tag}
+                    name={product.name}
+                    category={product.category}
+                    quantity={product.quantity}
+                    brand={product.brand}
+                    rating={product.rating}
+                    price={product.price}
+                    description={product.description}
+                    image={product.image}
+                  />
+                </CarouselItem>
               ))}
-            </CarouselItem>
-          </CarouselContent>
-        </Carousel> */}
-
-        <Carousel
-          plugins={[
-            Autoplay({
-              delay: 2000,
-              stopOnInteraction: true,
-            }),
-          ]}
-        >
-          <CarouselContent className="md:-ml-1 -ml-4">
-            {products.map((product, index) => (
-              <CarouselItem
-                key={index}
-                className="md:pl-5 md:basis-1/2 lg:basis-1/4"
-              >
-                <ProductCard
-                  key={index}
-                  tag={product.tag}
-                  name={product.name}
-                  category={product.category}
-                  quantity={product.quantity}
-                  brand={product.brand}
-                  rating={product.rating}
-                  price={product.price}
-                  description={product.description}
-                  image={product.image}
-                />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-        {/* <div className="grid grid-cols-4 gap-6">
-          {products.map((product, index) => (
-          ))}
-        </div> */}
-      </SectionContainer>
+            </CarouselContent>
+          </Carousel>
+        </SectionContainer>
+      </SContainer>
     </div>
   );
 };

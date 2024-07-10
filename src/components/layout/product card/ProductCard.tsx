@@ -30,7 +30,7 @@ const ProductCard = ({
   addTag,
 }: TProductCardProps) => {
   return (
-    <div className="border border-[#0000001d] rounded-md pt-1 cursor-pointer">
+    <div className="border border-[#0000001d] rounded-md pt-1 cursor-pointer bg-white hover:border-primaryColor duration-200 ">
       <div className="relative">
         <img src={image} alt="" />
         {tag && (
@@ -49,12 +49,16 @@ const ProductCard = ({
         <div className="flex justify-between items-center">
           <Link
             to={`/category/${category.toLocaleLowerCase()}`}
-            className="text-[12px] text-gray-400 font-semibold uppercase cursor-pointer"
+            className="text-[12px] text-gray-500 font-semibold uppercase cursor-pointer"
           >
             {category}
           </Link>
           <p className="font-semibold">{brand}</p>
         </div>
+        <p className="text-sm mt-1">
+          <strong>Stock: </strong>
+          {quantity}
+        </p>
         <h4 className="text-base capitalize font-semibold hover:text-primaryColor duration-200 my-2">
           <Link to={`/products/${name}`}>{name}</Link>
         </h4>

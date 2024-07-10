@@ -16,7 +16,7 @@ body {
 /* style for section title */
 
 .section-heading::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 0;
