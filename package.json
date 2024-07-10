@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-menubar": "^1.1.1",
     "@radix-ui/react-slot": "^1.1.0",
@@ -26,7 +27,8 @@
     "react-rating": "^2.0.5",
     "react-router-dom": "^6.24.1",
     "tailwind-merge": "^2.4.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^20.14.10",
