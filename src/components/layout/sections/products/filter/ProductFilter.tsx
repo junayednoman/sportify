@@ -14,7 +14,7 @@ const ProductFilter = () => {
       <FilterByBrand />
       <div className="flex items-center gap-3 mt-6">
         <SButtonSmall fullWidth={true}>Filter</SButtonSmall>
-        <SButtonSmall fullWidth={true}>Reset</SButtonSmall>
+        <SButtonSmall fullWidth={true}>Clear filter</SButtonSmall>
       </div>
     </div>
   );

@@ -13,12 +13,9 @@ import SButtonSmall from "@/components/ui/SButtonSmall";
 import { useState } from "react";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { HiBars3 } from "react-icons/hi2";
-import { Link } from "react-router-dom";
 import ProductFilter from "./filter/ProductFilter";
 import { MdOutlineFilterAlt } from "react-icons/md";
 

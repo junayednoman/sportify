@@ -1,11 +1,11 @@
 import App from "@/App";
 import AboutPage from "@/pages/About";
-import Cart from "@/pages/Cart";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import ManageProducts from "@/pages/ManageProducts";
 import Products from "@/pages/Products";
 import Signup from "@/pages/Signup";
+import SingleProduct from "@/pages/SingleProduct";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -30,8 +30,8 @@ export const router = createBrowserRouter([
         element: <AboutPage />,
       },
       {
-        path: "cart",
-        element: <Cart />,
+        path: "/products/:id",
+        element: <SingleProduct />,
       },
     ],
   },

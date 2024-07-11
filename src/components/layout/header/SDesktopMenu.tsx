@@ -1,9 +1,8 @@
 import SBadgeIcon from "@/components/ui/SBadgeIcon";
 import { FaRegCircleUser } from "react-icons/fa6";
-import { IoCartOutline } from "react-icons/io5";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { Link } from "react-router-dom";
-
+import CartModal from "../sections/cart/CartModal";
 const SDesktopMenu = () => {
   return (
     <>
@@ -13,20 +12,19 @@ const SDesktopMenu = () => {
           <Link to={"/products"}>all products</Link>
           <Link to={"/manage-products"}>manage products</Link>
           <Link to={"/about"}>about us</Link>
-          <Link to={"/cart"}>cart</Link>
+          {/* <Link to={"/cart"}>cart</Link> */}
         </div>
       </div>
-      <ul className="lg:flex items-center gap-4 text-3xl hidden">
-        <li className="cursor-pointer">
-          <SBadgeIcon icon={<MdOutlineFavoriteBorder />} value={1} />
-        </li>
-        <li className="cursor-pointer">
-          <SBadgeIcon icon={<IoCartOutline />} value={3} />
-        </li>
-        <li className="cursor-pointer">
-          <FaRegCircleUser />
-        </li>
-      </ul>
+      <div className="lg:flex items-center gap-4 text-3xl hidden">
+        <SBadgeIcon
+          icon={<MdOutlineFavoriteBorder className="cursor-pointer" />}
+          value={1}
+        />
+
+        <CartModal />
+
+        <FaRegCircleUser />
+      </div>
     </>
   );
 };

@@ -3,15 +3,8 @@ import AllProducts from "@/components/layout/sections/products/AllProducts";
 import ProductsSearchar from "@/components/layout/sections/products/ProductsSearchBar";
 import ProductsSidebar from "@/components/layout/sections/products/ProductsSidebar";
 import SWideContainer from "@/components/layout/SWideContainer";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import SBradCrumbs from "@/components/ui/SBradCrumbs";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
 
 const Products = () => {
   return (
@@ -24,17 +17,10 @@ const Products = () => {
         <SWideContainer>
           <SectionContainer>
             <div className="mb-12">
-              <Breadcrumb>
-                <BreadcrumbList className="text-base">
-                  <BreadcrumbItem>
-                    <Link to={"/"}>Home</Link>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator />
-                  <BreadcrumbItem>
-                    <BreadcrumbPage>Shop</BreadcrumbPage>
-                  </BreadcrumbItem>
-                </BreadcrumbList>
-              </Breadcrumb>
+              <SBradCrumbs
+                currentPage={"Products"}
+                pages={[{ label: "Home", url: "/" }]}
+              />
             </div>
             <div className="grid grid-cols-4 xl:gap-6 lg:gap-4 gap-6 relative">
               <div className="col-span-1 lg:block hidden">

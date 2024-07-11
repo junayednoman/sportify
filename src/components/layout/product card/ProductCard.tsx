@@ -1,6 +1,3 @@
-import { Button } from "@/components/ui/button";
-import SButton from "@/components/ui/SButton";
-import SButtonSmall from "@/components/ui/SButtonSmall";
 import { Link } from "react-router-dom";
 import Rating from "react-rating";
 import { FaRegStar, FaStar } from "react-icons/fa6";
@@ -60,7 +57,7 @@ const ProductCard = ({
           {quantity}
         </p>
         <h4 className="text-base capitalize font-semibold hover:text-primaryColor duration-200 my-2">
-          <Link to={`/products/${name}`}>{name}</Link>
+          <Link to={`/products/id`}>{name}</Link>
         </h4>
         <p className="text-sm">
           {description.length > 75 ? description.slice(0, 75) : description}...
@@ -76,7 +73,12 @@ const ProductCard = ({
           />
           <p>${price}</p>
         </div>
-        <SButtonSmall fullWidth={true}>View Details</SButtonSmall>
+        <Link
+          className="bg-primaryColor px-5 py-2 rounded-md duration-200 hover:bg-blackColor w-full inline-block text-center text-white text-[15px]"
+          to={"/products/id"}
+        >
+          View Details
+        </Link>
       </div>
     </div>
   );

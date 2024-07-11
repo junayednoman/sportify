@@ -8,7 +8,7 @@ const SBadgeIcon = ({ value, icon }: { value: number; icon: ReactNode }) => {
           {value}
         </p>
       )}
-      <div>{icon}</div>
+      <div className="hover:text-primaryColor duration-200">{icon}</div>
     </div>
   );
 };

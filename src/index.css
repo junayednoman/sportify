@@ -64,6 +64,18 @@ body {
   background-image: url(./assets/images/banner-3.jpg);
 }
 
+/* cart modal */
+
+.cart_modal[role="dialog"] {
+  min-width: 550px;
+  padding: 20px;
+}
+
+.cart_modal[type="button"] svg {
+  width: 60px !important;
+  height: 60px !important;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -134,5 +146,14 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* media query */
+
+@media (max-width: 550px) {
+  .cart_modal[role="dialog"] {
+    min-width: 100%;
+    padding: 15px;
   }
 }
