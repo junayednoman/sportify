@@ -2,45 +2,51 @@ import SContainer from "../../SContainer";
 import SectionContainer from "../../SectionContainer";
 import Features from "../home/features/Features";
 import OurTeam from "./OurTeam";
+import aboutImg from "@/assets/images/Sport_balls.svg.png";
 
 const About = () => {
   return (
     <>
       <SContainer>
         <SectionContainer>
-          <div>
-            <h4 className="md:text-4xl text-3xl font-semibold mb-3">About Us</h4>
-            <p className="lg:text-lg">
-              Welcome to Sportify, your premier destination for top-quality
-              sporting goods! Established in 2024, Sportify was founded by a
-              group of sports enthusiasts who recognized the need for a
-              reliable, customer-focused sports equipment provider. Our passion
-              for sports drives us to source and offer the best equipment and
-              accessories for cricket, football, basketball, golf, badminton,
-              hockey, and baseball. We believe that access to high-quality gear
-              can significantly enhance performance and enjoyment in any sport,
-              and we are committed to providing our customers with products that
-              meet the highest standards of quality and durability.
-            </p>
-            <p className="mt-3 lg:text-lg">
-              At Sportify, we understand that every athlete, from beginners to
-              professionals, deserves the best equipment to achieve their goals.
-              Our extensive range of products is carefully curated to cater to
-              the diverse needs of our customers, ensuring that you find exactly
-              what you need to excel in your sport. We pride ourselves on our
-              excellent customer service and are always here to assist you with
-              any queries or concerns.
-            </p>
-            <p className="mt-3 lg:text-lg">
-              Whether you are gearing up for your next big game or just looking
-              to stay active and fit, Sportify is here to support your sporting
-              journey with top-notch products and unparalleled service.
-            </p>
+          <div className="flex items-center gap-10">
+            <div className="lg:w-[56%] w-full">
+              <h4 className="md:text-4xl text-3xl font-semibold mb-3">
+                About Us
+              </h4>
+              <p className="">
+                Welcome to Sportify, your premier destination for top-quality
+                sporting goods! Established in 2024, Sportify was founded by a
+                group of sports enthusiasts who recognized the need for a
+                reliable, customer-focused sports equipment provider. Our
+                passion for sports drives us to source and offer the best
+                equipment and accessories for cricket, football, basketball,
+                golf, badminton, hockey, and baseball. We believe that access to
+                high-quality gear can significantly enhance performance and
+                enjoyment in any sport, and we are committed to providing our
+                customers with products that meet the highest standards of
+                quality and durability.
+              </p>
+              <p className="mt-3 ">
+                At Sportify, we understand that every athlete, from beginners to
+                professionals, deserves the best equipment to achieve their
+                goals. Our extensive range of products is carefully curated to
+                cater to the diverse needs of our customers, ensuring that you
+                find exactly what you need to excel in your sport. We pride
+                ourselves on our excellent customer service and are always here
+                to assist you with any queries or concerns.
+              </p>
+            </div>
+            <div className="w-[40%] lg:block hidden">
+              <img className="w-[70%] mx-auto" src={aboutImg} alt="" />
+            </div>
           </div>
         </SectionContainer>
         <SectionContainer>
           <div>
-            <h4 className="md:text-4xl text-3xl font-semibold mb-3">Our Mission</h4>
+            <h4 className="md:text-4xl text-3xl font-semibold mb-3">
+              Our Mission
+            </h4>
             <p className="lg:text-lg">
               At Sportify, our mission is to empower athletes of all levels by
               providing superior sports equipment and exceptional customer
@@ -63,7 +69,9 @@ const About = () => {
         </SectionContainer>
         <SectionContainer>
           <div>
-            <h4 className="md:text-4xl text-3xl font-semibold mb-3">Our Vision</h4>
+            <h4 className="md:text-4xl text-3xl font-semibold mb-3">
+              Our Vision
+            </h4>
             <p className="lg:text-lg">
               Our vision at Sportify is to become the leading provider of
               sporting goods globally, known for our commitment to quality,
@@ -83,7 +91,9 @@ const About = () => {
         </SectionContainer>
         <SectionContainer>
           <div>
-            <h4 className="md:text-4xl text-3xl font-semibold mb-3">Get in Touch</h4>
+            <h4 className="md:text-4xl text-3xl font-semibold mb-3">
+              Get in Touch
+            </h4>
             <p className="lg:text-lg">
               We value our customers and are always here to help you with any
               questions, comments, or concerns. Our dedicated support team is
