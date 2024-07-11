@@ -24,7 +24,16 @@ body {
   height: 3px; /* Adjust the height of the border */
   background-color: #83b828; /* Adjust the color of the border */
 }
-
+/* style for price range selector */
+.price_range [data-orientation="horizontal"] .bg-primary {
+  background: #83b828;
+}
+.price_range [role="slider"] {
+  border: 2px solid #83b828;
+}
+.price_range [style="transform: var(--radix-slider-thumb-transform)"]:focus {
+  outline: 0;
+}
 /* a {
   font-weight: 500 !important;
   display: inline-block;
