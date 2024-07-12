@@ -77,7 +77,7 @@ const ProductDetails = () => {
               <div>
                 <p className="text-sm">{discount}% Off</p>
                 <p className="line-through font-semibold text-gray-500">
-                  ${price - calculateDiscount(price, discount)}
+                  ${price}
                 </p>
               </div>
             )}

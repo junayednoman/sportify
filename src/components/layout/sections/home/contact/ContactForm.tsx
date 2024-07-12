@@ -22,7 +22,6 @@ const ContactForm = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    // Handle form submission (e.g., send data to your backend)
   };
 
   return (
@@ -34,7 +33,7 @@ const ContactForm = () => {
               inputName={"name"}
               label={"Name"}
               placeholder={"Enter your name"}
-              error={methods.formState.errors.name} // Pass errors
+              error={methods.formState.errors.name}
             />
           </div>
           <div>
@@ -42,7 +41,7 @@ const ContactForm = () => {
               inputName={"email"}
               label={"Email"}
               placeholder={"Enter your email"}
-              error={methods.formState.errors.email} // Pass errors
+              error={methods.formState.errors.email}
             />
           </div>
         </div>
@@ -51,7 +50,7 @@ const ContactForm = () => {
             inputName={"subject"}
             label={"Subject"}
             placeholder={"Enter subject"}
-            error={methods.formState.errors.subject} // Pass errors
+            error={methods.formState.errors.subject}
           />
         </div>
         <div>

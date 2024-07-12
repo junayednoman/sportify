@@ -5,6 +5,7 @@ import SSocialIcons from "@/components/ui/SSocialIcons";
 import { MdOutlineEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
 import FooterCopyright from "./FooterCopyright";
+import CartModal from "../sections/cart/CartModal";
 
 const Footer = () => {
   return (
@@ -33,7 +34,7 @@ const Footer = () => {
               <Link to={"/products"}>all products</Link>
               <Link to={"/manage-products"}>manage products</Link>
               <Link to={"/about"}>about us</Link>
-              <Link to={"/cart"}>cart</Link>
+              <CartModal>cart</CartModal>
             </div>
           </div>
           <div className="capitalize md:w-[48%] xl:w-[20%] lg:w-[22%] w-full">

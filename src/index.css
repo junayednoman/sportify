@@ -65,9 +65,9 @@ body {
 }
 
 /* cart modal */
-
 .cart_modal[role="dialog"] {
   min-width: 550px;
+  overflow-x: auto;
   padding: 20px;
 }
 

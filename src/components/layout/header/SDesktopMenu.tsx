@@ -3,6 +3,7 @@ import { FaRegCircleUser } from "react-icons/fa6";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { Link } from "react-router-dom";
 import CartModal from "../sections/cart/CartModal";
+import { IoCartOutline } from "react-icons/io5";
 const SDesktopMenu = () => {
   return (
     <>
@@ -12,7 +13,7 @@ const SDesktopMenu = () => {
           <Link to={"/products"}>all products</Link>
           <Link to={"/manage-products"}>manage products</Link>
           <Link to={"/about"}>about us</Link>
-          {/* <Link to={"/cart"}>cart</Link> */}
+          <CartModal>cart</CartModal>
         </div>
       </div>
       <div className="lg:flex items-center gap-4 text-3xl hidden">
@@ -21,7 +22,9 @@ const SDesktopMenu = () => {
           value={1}
         />
 
-        <CartModal />
+        <CartModal>
+          <SBadgeIcon icon={<IoCartOutline />} value={3} />
+        </CartModal>
 
         <FaRegCircleUser />
       </div>

@@ -1,6 +1,7 @@
 import { HiBars3 } from "react-icons/hi2";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../../ui/sheet";
 import { Link } from "react-router-dom";
+import CartModal from "../sections/cart/CartModal";
 
 const SMobileMenu = () => {
   return (
@@ -33,9 +34,7 @@ const SMobileMenu = () => {
                 </SheetClose>
               </li>
               <li>
-                <SheetClose asChild>
-                  <Link to={"/cart"}>cart</Link>
-                </SheetClose>
+                <CartModal>cart</CartModal>
               </li>
               <li>
                 <SheetClose asChild>

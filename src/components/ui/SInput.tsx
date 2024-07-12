@@ -1,11 +1,11 @@
-import { useFormContext } from "react-hook-form";
+import { FieldError, useFormContext } from "react-hook-form";
 import { Input } from "./input";
 type TInputProps = {
   type?: string;
   inputName: string;
   label: string;
   placeholder: string;
-  error?: any;
+  error?: FieldError | undefined;
 };
 
 const SInput = ({
@@ -20,7 +20,7 @@ const SInput = ({
     <div>
       <label
         htmlFor={inputName}
-        className="block text-sm text-gray-700 font-semibold"
+        className="block text-sm text-gray-700 font-semibold capitalize"
       >
         {label}
       </label>
