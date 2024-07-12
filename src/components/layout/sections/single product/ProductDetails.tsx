@@ -24,6 +24,8 @@ const product = {
 import { PhotoProvider, PhotoView } from "react-photo-view";
 
 import "react-photo-view/dist/react-photo-view.css";
+import SectionContainer from "../../SectionContainer";
+import SingleProductAdditionalInfo from "./SingleProductAdditionalInfo";
 const ProductDetails = () => {
   const {
     name,
@@ -39,7 +41,7 @@ const ProductDetails = () => {
   } = product;
   return (
     <div>
-      <div className="grid grid-cols-2 gap-9">
+      <div className="grid lg:grid-cols-2 gap-9">
         <div className="p-5 border rounded-md mr-3 relative">
           <div className="absolute top-3 left-5 bg-primaryColor text-white p-2 px-[9px] rounded-full">
             <FaRegEye className="text-xl" />
@@ -47,16 +49,18 @@ const ProductDetails = () => {
           <PhotoProvider>
             <div className="cursor-pointer">
               <PhotoView src={image}>
-                <img src={image} alt="" />
+                <img className="mx-auto" src={image} alt="" />
               </PhotoView>
             </div>
           </PhotoProvider>
         </div>
-        <div className="space-y-5">
+        <div className="md:space-y-5 space-y-4">
           <div className="inline-block p-2 px-3 rounded-md bg-lightGreenColor text-sm font-semibold">
             <p>{tag}</p>
           </div>
-          <h3 className="text-4xl font-semibold capitalize">{name}</h3>
+          <h3 className="md:text-4xl text-[27px] font-semibold capitalize">
+            {name}
+          </h3>
           {/* showing rating */}
           <div className="flex items-center gap-2">
             <Rating
@@ -69,12 +73,12 @@ const ProductDetails = () => {
             <p className="text-sm text-gray-400">(32 reviews)</p>
           </div>
           {/* product price */}
-          <div className="py-2 flex items-center gap-3">
-            <h3 className="text-5xl font-semibold text-primaryColor">
+          <div className="md:py-2 flex md:flex-row flex-col md:items-center gap-3">
+            <h3 className="md:text-5xl text-3xl font-semibold text-primaryColor">
               ${discount ? calculateDiscount(price, discount) : price}
             </h3>
             {discount > 0 && (
-              <div>
+              <div className="md:block hidden">
                 <p className="text-sm">{discount}% Off</p>
                 <p className="line-through font-semibold text-gray-500">
                   ${price}
@@ -122,6 +126,11 @@ const ProductDetails = () => {
             <strong className="capitalize">Category:</strong> {category}
           </Link>
         </div>
+      </div>
+      <div className="mt-12">
+        <SectionContainer>
+          <SingleProductAdditionalInfo description={description} />
+        </SectionContainer>
       </div>
     </div>
   );
