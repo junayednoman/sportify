@@ -4,6 +4,7 @@ import Checkout from "@/pages/Checkout";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import ManageProducts from "@/pages/ManageProducts";
+import OrderSuccess from "@/pages/OrderSuccess";
 import Products from "@/pages/Products";
 import Signup from "@/pages/Signup";
 import SingleProduct from "@/pages/SingleProduct";
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: "/checkout",
         element: <Checkout />,
+      },
+      {
+        path: "/order-success",
+        element: <OrderSuccess />,
       },
     ],
   },

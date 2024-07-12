@@ -2,6 +2,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import CheckOutProductItem from "./CheckOutProductItem";
 import SButton from "@/components/ui/SButton";
 import SButtonSmall from "@/components/ui/SButtonSmall";
+import { Link } from "react-router-dom";
 
 const CheckOutSidebar = () => {
   return (
@@ -66,7 +67,9 @@ const CheckOutSidebar = () => {
             </a>
           </label>
         </div>
-        <SButtonSmall fullWidth={true}>Place Order</SButtonSmall>
+        <Link to={"/order-success"}>
+          <SButtonSmall fullWidth={true}>Place Order</SButtonSmall>
+        </Link>
       </div>
     </div>
   );
