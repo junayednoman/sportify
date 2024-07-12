@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 @font-face {
   font-family: "futura";
   src: url("./assets/fonts/futura/futur.ttf") format("truetype");

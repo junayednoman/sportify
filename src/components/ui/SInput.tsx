@@ -6,6 +6,7 @@ type TInputProps = {
   label: string;
   placeholder: string;
   error?: FieldError | undefined;
+  defaultValue?: number | string ;
 };
 
 const SInput = ({
@@ -14,6 +15,7 @@ const SInput = ({
   label,
   placeholder,
   error,
+  defaultValue,
 }: TInputProps) => {
   const { register } = useFormContext();
   return (
@@ -25,6 +27,7 @@ const SInput = ({
         {label}
       </label>
       <Input
+        defaultValue={defaultValue}
         placeholder={placeholder}
         id={inputName}
         type={type ? type : "text"}

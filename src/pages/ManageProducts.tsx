@@ -1,3 +1,7 @@
+import SContainer from "@/components/layout/SContainer";
+import SectionContainer from "@/components/layout/SectionContainer";
+import AddProductForm from "@/components/layout/sections/manage products/AddProductForm";
+import AllAddedProducts from "@/components/layout/sections/manage products/AllAddedProducts";
 import { Helmet } from "react-helmet";
 
 const ManageProducts = () => {
@@ -6,7 +10,18 @@ const ManageProducts = () => {
       <Helmet>
         <title>Manage Products - Sportify | Equip your game</title>
       </Helmet>
-      <h1>This is, ManageProducts component!</h1>
+      <SContainer>
+        <SectionContainer>
+          <div className="space-y-12">
+            <div className="border rounded-md p-6 xl:w-[90%]">
+              <AllAddedProducts />
+            </div>
+            <div className="border rounded-md p-6 xl:w-[90%]">
+              <AddProductForm />
+            </div>
+          </div>
+        </SectionContainer>
+      </SContainer>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import SButtonSmall from "@/components/ui/SButtonSmall";
@@ -15,12 +15,19 @@ const schema = yup.object().shape({
   message: yup.string().required("Message is required"),
 });
 
+type TContactFormInputs = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
+
 const ContactForm = () => {
-  const methods = useForm({
+  const methods = useForm<TContactFormInputs>({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
+  const onSubmit: SubmitHandler<TContactFormInputs> = (data) => {
     console.log(data);
   };
 

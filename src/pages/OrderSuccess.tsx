@@ -10,8 +10,10 @@ const OrderSuccess = () => {
       <SectionContainer>
         <div className="text-center">
           <img className="mx-auto mb-8" src={successIcon} alt="" />
-          <h2 className="font-semibold text-5xl">Order Placed Successfully!</h2>
-          <div className="mt-6 w-[600px] mx-auto">
+          <h2 className="font-semibold md:text-5xl text-4xl">
+            Order Placed Successfully!
+          </h2>
+          <div className="mt-6 md:w-[600px] mx-auto">
             <p>
               Thank you for shopping with Sportify! Your order has been
               successfully placed and is now being processed. A confirmation
