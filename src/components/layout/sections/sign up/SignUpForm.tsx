@@ -5,7 +5,9 @@ import SButtonSmall from "@/components/ui/SButtonSmall";
 import SInput from "@/components/ui/SInput";
 
 import * as yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSignUpMutation } from "@/redux/api/auth/authApi";
+import { toast } from "sonner";
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
@@ -28,12 +30,27 @@ interface IFormInputs {
 }
 
 const SignUpForm: React.FC = () => {
+  const navigate = useNavigate();
+  const [signUp] = useSignUpMutation();
   const methods = useForm<IFormInputs>({
     resolver: yupResolver(schema),
   });
-
-  const onSubmit = (data: IFormInputs) => {
-    console.log(data);
+  const onSubmit = async (data: IFormInputs) => {
+    const toastLoading = toast.loading("Signing up...");
+    try {
+      const res = await signUp(data).unwrap();
+      if (res.success) {
+        toast.success(res.message, {
+          id: toastLoading,
+        });
+        navigate(`/login`);
+      }
+    } catch (err: any) {
+      console.log("err, ", err.data.message);
+      toast.error(err.data.message || "Something went wrong!", {
+        id: toastLoading,
+      });
+    }
   };
 
   return (

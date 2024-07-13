@@ -26,7 +26,9 @@ const SDesktopMenu = () => {
           <SBadgeIcon icon={<IoCartOutline />} value={3} />
         </CartModal>
 
-        <FaRegCircleUser />
+        <Link to={"/login"}>
+          <FaRegCircleUser />
+        </Link>
       </div>
     </>
   );

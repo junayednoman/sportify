@@ -3,9 +3,13 @@ import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import SButtonSmall from "@/components/ui/SButtonSmall";
 import SInput from "@/components/ui/SInput";
-
+import { jwtDecode } from "jwt-decode";
 import * as yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useLoginMutation } from "@/redux/api/auth/authApi";
+import { toast } from "sonner";
+import { useAppDispatch } from "@/redux/hooks";
+import { setUser } from "@/redux/features/authSlice";
 
 const schema = yup.object().shape({
   email: yup
@@ -23,10 +27,34 @@ interface IFormInputs {
 const LoginForm: React.FC = () => {
   const methods = useForm<IFormInputs>({
     resolver: yupResolver(schema),
+    defaultValues: { email: "noman@gmail.com", password: "password123" },
   });
+  const navigate = useNavigate();
 
-  const onSubmit = (data: IFormInputs) => {
-    console.log(data);
+  const [login] = useLoginMutation();
+  const dispatch = useAppDispatch();
+
+  const onSubmit = async (data: IFormInputs) => {
+    const loadingToast = toast.loading("Signing in...", {
+      position: "top-center",
+    });
+    try {
+      const res = await login(data).unwrap();
+      console.log(res);
+      if (res.success) {
+        const token = res.accessToken;
+        const user = jwtDecode(token);
+        toast.success(res.message, {
+          id: loadingToast,
+        });
+        dispatch(setUser({ user, token }));
+        navigate(`/`);
+      }
+    } catch (error: any) {
+      toast.error(error.data.message || "Something went wrong!", {
+        id: loadingToast,
+      });
+    }
   };
 
   return (
