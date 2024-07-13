@@ -6,6 +6,7 @@ import Login from "@/pages/Login";
 import ManageProducts from "@/pages/ManageProducts";
 import OrderSuccess from "@/pages/OrderSuccess";
 import Products from "@/pages/Products";
+import ProtectedRoute from "@/pages/ProtectedRoute";
 import Signup from "@/pages/Signup";
 import SingleProduct from "@/pages/SingleProduct";
 import { createBrowserRouter } from "react-router-dom";
@@ -25,7 +26,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/manage-products",
-        element: <ManageProducts />,
+        element: (
+          <ProtectedRoute>
+            <ManageProducts />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "about",
@@ -37,7 +42,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/checkout",
-        element: <Checkout />,
+        element: (
+          <ProtectedRoute>
+            <Checkout />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
@@ -51,6 +60,10 @@ export const router = createBrowserRouter([
   },
   {
     path: "/order-success",
-    element: <OrderSuccess />,
+    element: (
+      <ProtectedRoute>
+        <OrderSuccess />
+      </ProtectedRoute>
+    ),
   },
 ]);

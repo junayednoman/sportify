@@ -7,9 +7,9 @@ import {
   FetchBaseQueryMeta,
 } from "@reduxjs/toolkit/query";
 import { baseApi } from "../baseApi";
-import { TLogin, TUser } from "@/types";
+import { TProduct } from "@/types";
 
-const authApi = baseApi.injectEndpoints({
+const productApi = baseApi.injectEndpoints({
   endpoints: (
     builder: EndpointBuilder<
       BaseQueryFn<
@@ -23,21 +23,23 @@ const authApi = baseApi.injectEndpoints({
       "api"
     >
   ) => ({
-    login: builder.mutation({
-      query: (userInfo: TLogin) => ({
-        url: "/auth/login",
+    addProduct: builder.mutation({
+      query: (productData: TProduct) => ({
+        url: "/products",
         method: "POST",
-        body: userInfo,
+        body: productData,
       }),
+      invalidatesTags: ["product"],
     }),
-    signUp: builder.mutation({
-      query: (userInfo: TUser) => ({
-        url: "/auth/sign-up",
-        method: "POST",
-        body: userInfo,
+    getProducts: builder.query({
+      query: (query) => ({
+        url: `/products`,
+        method: "GET",
+        params: { ...query },
       }),
+      providesTags: ["product"],
     }),
   }),
 });
 
-export const { useLoginMutation, useSignUpMutation } = authApi;
+export const { useAddProductMutation, useGetProductsQuery } = productApi;

@@ -4,9 +4,18 @@ import ProductsSearchar from "@/components/layout/sections/products/ProductsSear
 import ProductsSidebar from "@/components/layout/sections/products/ProductsSidebar";
 import SWideContainer from "@/components/layout/SWideContainer";
 import SBradCrumbs from "@/components/ui/SBradCrumbs";
+import { useGetProductsQuery } from "@/redux/api/product/productApi";
+import { useState } from "react";
 import { Helmet } from "react-helmet";
 
 const Products = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sortBy, setSortBy] = useState("null");
+  console.log(sortBy);
+  const productQuery = { searchTerm, sort: `${sortBy} createdAt` };
+  const { data, isLoading, error } = useGetProductsQuery(productQuery);
+  // const productData = data?.data;
+
   return (
     <div>
       <Helmet>
@@ -30,9 +39,17 @@ const Products = () => {
               </div>
               <div className="lg:col-span-3 col-span-4">
                 <div className="xl:mb-6 mb-4">
-                  <ProductsSearchar />
+                  <ProductsSearchar
+                    setSearchText={setSearchTerm}
+                    setSortBy={setSortBy}
+                    sortBy={sortBy}
+                  />
                 </div>
-                <AllProducts />
+                <AllProducts
+                  productData={data}
+                  loading={isLoading}
+                  error={error}
+                />
               </div>
             </div>
           </SectionContainer>
