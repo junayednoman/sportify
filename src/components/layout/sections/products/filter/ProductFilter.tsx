@@ -5,7 +5,6 @@ import FilterByPrice from "./FilterByPrice";
 import FilterByRating from "./FilterByRating";
 import { Dispatch, SetStateAction, useState } from "react";
 import { ProductFilterQueryDataProps } from "@/types";
-import { SheetClose } from "@/components/ui/sheet";
 
 type TProductSideBarFilterProps = {
   setFilterQueryData: Dispatch<SetStateAction<ProductFilterQueryDataProps>>;

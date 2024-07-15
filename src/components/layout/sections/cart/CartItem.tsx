@@ -1,4 +1,3 @@
-import SBtnLoading from "@/components/ux/SBtnLoading";
 import SmallLoading from "@/components/ux/SmallLoading";
 import {
   useDeleteCartProductItemMutation,
@@ -26,12 +25,9 @@ const CartItem = ({ product }: { product: TCartItemProps }) => {
 
   const { image, name, quantity, price, productId } = product;
 
-  const [quantityToUpdate, setQuantityToUpdate] = useState(quantity);
-
   // handle update cart product quantity
   const handleIncreaseQuantity = async (updatedQuantity: number) => {
     setLoading(true);
-    setQuantityToUpdate(updatedQuantity);
     const pricePerProduct = price / quantity;
     const updatedPrice = pricePerProduct * updatedQuantity;
     const updatedData = {
