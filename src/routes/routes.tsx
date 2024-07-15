@@ -1,6 +1,7 @@
 import App from "@/App";
 import AboutPage from "@/pages/About";
 import Checkout from "@/pages/Checkout";
+import ErrorPage from "@/pages/ErrorPage";
 import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import ManageProducts from "@/pages/ManageProducts";
@@ -16,6 +17,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",

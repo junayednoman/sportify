@@ -23,7 +23,7 @@ const AllProducts = ({ productData, loading, error }: TAllProductProps) => {
         <h4 className="font-semibold md:text-2xl text-xl">
           Failed to fetch data!
         </h4>
-        ;
+
       </div>
     );
   }

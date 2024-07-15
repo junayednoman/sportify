@@ -41,13 +41,13 @@ const AddedProductItem = ({ product }: { product: TCartItemProps }) => {
   };
   return (
     <div className="py-3 border-b px-3">
-      <div className="grid grid-cols-6 items-center text-center gap-3">
+      <div className="grid md:grid-cols-6 grid-cols-5 items-center text-center gap-3">
         <div className="sm:w-[80px] w-[65px]">
           <img src={image} alt="" />
         </div>
         <h4 className="sm:text-base text-sm">{name}</h4>
         <p>{quantity}</p>
-        <p>{category}</p>
+        <p className="md:block hidden">{category}</p>
         <h5>${price}</h5>
         <div>
           <DropdownMenu>

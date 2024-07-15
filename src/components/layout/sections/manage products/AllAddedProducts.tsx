@@ -28,7 +28,6 @@ const AllAddedProducts = () => {
         <h4 className="font-semibold md:text-2xl text-xl">
           Failed to fetch data!
         </h4>
-        ;
       </div>
     );
   }
@@ -44,11 +43,11 @@ const AllAddedProducts = () => {
       </div>
 
       <div className="mt-8">
-        <div className="md:p-4 p-3 bg-lightWhiteColor rounded-md grid grid-cols-6 items-center text-center gap-3 md:font-semibold">
+        <div className="md:p-4 p-3 bg-lightWhiteColor rounded-md grid md:grid-cols-6 grid-cols-5 items-center text-center gap-3 md:font-semibold">
           <h4 className=" text-left">Image</h4>
           <h4>Name</h4>
           <h4>Stock</h4>
-          <h4>Category</h4>
+          <h4 className="md:block hidden">Category</h4>
           <h4>Price</h4>
           <h4>Action</h4>
         </div>

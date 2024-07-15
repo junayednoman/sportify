@@ -40,7 +40,6 @@ const ProductDetails = ({ getProduct }: { getProduct: any }) => {
         <h4 className="font-semibold md:text-2xl text-xl">
           Failed to fetch data!
         </h4>
-        ;
       </div>
     );
   }
