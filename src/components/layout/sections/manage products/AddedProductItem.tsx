@@ -27,12 +27,11 @@ const AddedProductItem = ({ product }: { product: TCartItemProps }) => {
   // handle delete product
   const handleDeleteProduct = async () => {
     const loadingToast = toast.loading("Deleting product...");
-    console.log(_id);
+
     try {
       const res = await deleteProduct(_id).unwrap();
       if (res.success) {
         toast.success("Product deleted successfully!", { id: loadingToast });
-        console.log(res.data);
       }
     } catch (error: any) {
       toast.error(error.data.message || "Something went wrong!", {

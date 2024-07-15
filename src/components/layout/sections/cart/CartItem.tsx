@@ -25,10 +25,8 @@ const CartItem = ({ product }: { product: TCartItemProps }) => {
   const [loading, setLoading] = useState(false);
 
   const { image, name, quantity, price, productId } = product;
-  console.log(price);
 
   const [quantityToUpdate, setQuantityToUpdate] = useState(quantity);
-  console.log(quantityToUpdate);
 
   // handle update cart product quantity
   const handleIncreaseQuantity = async (updatedQuantity: number) => {
@@ -43,8 +41,7 @@ const CartItem = ({ product }: { product: TCartItemProps }) => {
       price: updatedPrice,
     };
     try {
-      const res = await updateCartProductQuantity(updatedData).unwrap();
-      console.log(res);
+      await updateCartProductQuantity(updatedData).unwrap();
     } catch (error: any) {
       console.log(error.data);
     } finally {

@@ -59,7 +59,6 @@ const ProductDetails = ({ getProduct }: { getProduct: any }) => {
     _id,
   } = data.data;
 
-  console.log(image);
 
   // handle add to cart
   const handleAddToCart = async () => {
@@ -80,7 +79,6 @@ const ProductDetails = ({ getProduct }: { getProduct: any }) => {
         },
       ],
     };
-    console.log(cartData);
     try {
       const res = await addCart(cartData).unwrap();
       if (res.success) {

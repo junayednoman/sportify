@@ -33,7 +33,6 @@ const AllAddedProducts = () => {
     );
   }
 
-  console.log(data.data);
 
   return (
     <div>

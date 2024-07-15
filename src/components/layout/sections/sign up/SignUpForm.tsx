@@ -46,7 +46,6 @@ const SignUpForm: React.FC = () => {
         navigate(`/login`);
       }
     } catch (err: any) {
-      console.log("err, ", err.data.message);
       toast.error(err.data.message || "Something went wrong!", {
         id: toastLoading,
       });

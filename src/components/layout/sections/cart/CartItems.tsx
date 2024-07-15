@@ -12,7 +12,6 @@ const CartItems = () => {
   cart.products.forEach((product: TCartProduct) => {
     totalPrice += product.price;
   });
-  console.log(totalPrice);
   const vatIncludedPrice = totalPrice * 0.15 + totalPrice;
 
   if (cart.products.length === 0) {

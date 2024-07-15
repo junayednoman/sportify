@@ -19,7 +19,7 @@ const CheckOutProductItem = ({ product }: { product: TCartItemProps }) => {
   const [loading, setLoading] = useState(false);
 
   const [quantityToUpdate, setQuantityToUpdate] = useState(quantity);
-  console.log(quantityToUpdate);
+
 
   // handle update cart product quantity
   const handleIncreaseQuantity = async (updatedQuantity: number) => {

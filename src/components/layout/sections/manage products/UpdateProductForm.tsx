@@ -77,7 +77,6 @@ const UpdateProductForm: FC = () => {
         toast.success("Product updated successfully!", { id: toastLoading });
       }
     } catch (error: any) {
-      console.log(error.data);
       toast.error(error.data.message || "Something went wrong!", {
         id: toastLoading,
       });
