@@ -18,10 +18,10 @@ const ManageProducts = () => {
         />
         <SectionContainer>
           <div className="space-y-12">
-            <div className="border rounded-md p-6 xl:w-[90%]">
+            <div className="border rounded-md md:p-6 p-3 xl:w-[90%]">
               <AllAddedProducts />
             </div>
-            <div className="border rounded-md p-6 xl:w-[90%]">
+            <div className="border rounded-md md:p-6 p-3 xl:w-[90%]">
               <AddProductForm />
             </div>
           </div>

@@ -1,32 +1,21 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import {
-  BaseQueryFn,
-  EndpointBuilder,
-  FetchArgs,
-  FetchBaseQueryError,
-  FetchBaseQueryMeta,
-} from "@reduxjs/toolkit/query";
+import { IFormInputs } from "@/components/layout/sections/manage products/AddProductForm";
 import { baseApi } from "../baseApi";
-import { TProduct } from "@/types";
 
 const productApi = baseApi.injectEndpoints({
-  endpoints: (
-    builder: EndpointBuilder<
-      BaseQueryFn<
-        string | FetchArgs,
-        unknown,
-        FetchBaseQueryError,
-        {},
-        FetchBaseQueryMeta
-      >,
-      "product",
-      "api"
-    >
-  ) => ({
+  endpoints: (builder) => ({
     addProduct: builder.mutation({
-      query: (productData: TProduct) => ({
+      query: (productData: IFormInputs) => ({
         url: "/products",
         method: "POST",
+        body: productData,
+      }),
+      invalidatesTags: ["product"],
+    }),
+    updateProduct: builder.mutation({
+      query: (productData: IFormInputs) => ({
+        url: `/products/${productData._id}`,
+        method: "PUT",
         body: productData,
       }),
       invalidatesTags: ["product"],
@@ -39,7 +28,27 @@ const productApi = baseApi.injectEndpoints({
       }),
       providesTags: ["product"],
     }),
+    getSingleProduct: builder.query({
+      query: (id) => ({
+        url: `/products/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["product"],
+    }),
+    deleteProduct: builder.mutation({
+      query: (id) => ({
+        url: `/products/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["product"],
+    }),
   }),
 });
 
-export const { useAddProductMutation, useGetProductsQuery } = productApi;
+export const {
+  useAddProductMutation,
+  useUpdateProductMutation,
+  useGetProductsQuery,
+  useGetSingleProductQuery,
+  useDeleteProductMutation,
+} = productApi;

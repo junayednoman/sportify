@@ -1,9 +1,17 @@
+import { Dispatch, SetStateAction } from "react";
 import ProductFilter from "./filter/ProductFilter";
-
-const ProductsSidebar = () => {
+import { ProductFilterQueryDataProps } from "@/types";
+type TProductSideBarProps = {
+  setFilterQueryData: Dispatch<SetStateAction<ProductFilterQueryDataProps>>;
+};
+const ProductsSidebar = ({
+  setFilterQueryData,
+}: TProductSideBarProps) => {
   return (
     <div>
-      <ProductFilter />
+      <ProductFilter
+        setFilterQueryData={setFilterQueryData}
+      />
     </div>
   );
 };

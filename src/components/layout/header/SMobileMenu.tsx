@@ -20,7 +20,7 @@ const SMobileMenu = () => {
               </li>
               <li>
                 <SheetClose asChild>
-                  <Link to={"/products"}>all products</Link>
+                  <Link to={"/products/all"}>all products</Link>
                 </SheetClose>
               </li>
               <li>

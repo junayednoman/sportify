@@ -1,17 +1,19 @@
-import React, { useState } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
+import { ChangeEvent, Dispatch } from "react";
+type TFilterByPriceProps = {
+  setPrice: Dispatch<React.SetStateAction<number>>;
+  price: number;
+};
 
-function FilterByPrice() {
-  const [price, setPrice] = useState<number>(93); // Initialize with default value
-
+function FilterByPrice({ setPrice, price }: TFilterByPriceProps) {
   const handleSliderChange = (newValue: number[]) => {
     setPrice(newValue[0]);
   };
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(event.target.value);
-    if (newValue >= 0 && newValue <= 100) {
+    if (newValue >= 0 && newValue <= 700) {
       setPrice(newValue);
     }
   };

@@ -1,7 +1,6 @@
 import SContainer from "@/components/layout/SContainer";
 import BillingInfoForm from "@/components/layout/sections/checkout/BillingInfoForm";
 import CheckOutSidebar from "@/components/layout/sections/checkout/CheckOutSidebar";
-import PaymentInformation from "@/components/layout/sections/checkout/PaymentInformation";
 import SBradCrumbs from "@/components/ui/SBradCrumbs";
 import { Helmet } from "react-helmet";
 
@@ -21,9 +20,6 @@ const Checkout = () => {
           <div className="lg:col-span-3 col-span-5">
             <div className="border rounded-md md:p-6 p-4 py-5">
               <BillingInfoForm />
-              <div className="md:mt-9 mt-7">
-                <PaymentInformation />
-              </div>
             </div>
           </div>
           <div className="lg:col-span-2 col-span-5">

@@ -1,31 +1,21 @@
 import { Link } from "react-router-dom";
 import Rating from "react-rating";
 import { FaRegStar, FaStar } from "react-icons/fa6";
-type TProductCardProps = {
-  name: string;
-  category: string;
-  quantity: number;
-  brand: string;
-  rating: number;
-  description: string;
-  image: string;
-  price: number;
-  tag?: string;
-  addTag?: string;
-};
+import { TProduct } from "@/types";
 
-const ProductCard = ({
-  name,
-  category,
-  quantity,
-  brand,
-  rating,
-  price,
-  description,
-  image,
-  tag,
-  addTag,
-}: TProductCardProps) => {
+const ProductCard = ({ product }: { product: TProduct }) => {
+  const {
+    name,
+    category,
+    quantity,
+    brand,
+    rating,
+    price,
+    description,
+    image,
+    tag,
+    _id,
+  } = product;
   return (
     <div className="border border-[#0000001d] rounded-md pt-1 cursor-pointer bg-white hover:border-primaryColor duration-200 ">
       <div className="relative">
@@ -35,17 +25,12 @@ const ProductCard = ({
             {tag}
           </span>
         )}
-        {addTag && (
-          <span className="border-2 rounded-sm p-1 px-2 text-sm text-primaryColor border-primaryColor font-semibold absolute top-2 right-3 capitalize">
-            {addTag}
-          </span>
-        )}
       </div>
       <hr />
       <div className="p-5">
         <div className="flex justify-between items-center">
           <Link
-            to={`/category/${category.toLocaleLowerCase()}`}
+            to={`/products/${category}`}
             className="text-[12px] text-gray-500 font-semibold uppercase cursor-pointer"
           >
             {category}
@@ -57,10 +42,11 @@ const ProductCard = ({
           {quantity}
         </p>
         <h4 className="text-base capitalize font-semibold hover:text-primaryColor duration-200 my-2">
-          <Link to={`/products/id`}>{name}</Link>
+          <Link to={`/product/${_id}`}>{name}</Link>
         </h4>
         <p className="text-sm">
-          {description.length > 75 ? description.slice(0, 75) : description}...
+          {description!.length > 75 ? description!.slice(0, 75) : description}
+          ...
         </p>
         <div className="flex items-center justify-between font-semibold my-2">
           {/* <p>{rating}</p> */}
@@ -75,7 +61,7 @@ const ProductCard = ({
         </div>
         <Link
           className="bg-primaryColor px-5 py-2 rounded-md duration-200 hover:bg-blackColor w-full inline-block text-center text-white text-[15px]"
-          to={"/products/id"}
+          to={`/product/${_id}`}
         >
           View Details
         </Link>

@@ -10,18 +10,25 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import SButtonSmall from "@/components/ui/SButtonSmall";
-import { Dispatch } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import ProductFilter from "./filter/ProductFilter";
 import { MdOutlineFilterAlt } from "react-icons/md";
+import { ProductFilterQueryDataProps } from "@/types";
+
+type TProductsSearcharProps = {
+  setSearchText: Dispatch<SetStateAction<string>>;
+  sortBy: string;
+  setSortBy: Dispatch<SetStateAction<string>>;
+  setFilterQueryData: Dispatch<SetStateAction<ProductFilterQueryDataProps>>;
+};
 
 const ProductsSearchar = ({
+  setFilterQueryData,
   setSearchText,
   sortBy,
   setSortBy,
-}: {
-  setSearchText: Dispatch<React.SetStateAction<string>>;
-}) => {
+}: TProductsSearcharProps) => {
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSearchText(e.target.search.value);
@@ -41,7 +48,7 @@ const ProductsSearchar = ({
             </SheetTrigger>
             <SheetContent side="left">
               <div>
-                <ProductFilter />
+                <ProductFilter setFilterQueryData={setFilterQueryData} />
               </div>
             </SheetContent>
           </Sheet>

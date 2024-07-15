@@ -40,7 +40,6 @@ const LoginForm: React.FC = () => {
     });
     try {
       const res = await login(data).unwrap();
-      console.log(res);
       if (res.success) {
         const token = res.accessToken;
         const user = jwtDecode(token);

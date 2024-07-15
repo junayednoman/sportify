@@ -5,9 +5,15 @@ import * as yup from "yup";
 import SInput from "@/components/ui/SInput";
 import { Textarea } from "@/components/ui/textarea";
 import SButtonSmall from "@/components/ui/SButtonSmall";
-import { useAddProductMutation } from "@/redux/api/product/productApi";
+import {
+  useGetSingleProductQuery,
+  useUpdateProductMutation,
+} from "@/redux/api/product/productApi";
 import { toast } from "sonner";
 import SBtnLoading from "@/components/ux/SBtnLoading";
+import { useParams } from "react-router-dom";
+import SLoading from "@/components/ux/SLoading";
+import DataNotFound from "@/components/ux/DataNotFound";
 
 // Form values interface
 export interface IFormInputs {
@@ -46,21 +52,29 @@ const schema = yup.object().shape({
     .required("Image URL is required"),
 });
 
-const AddProductForm: FC = () => {
+const UpdateProductForm: FC = () => {
+  const { productId } = useParams();
+  const {
+    data: fetchedProductData,
+    isLoading,
+    error,
+  } = useGetSingleProductQuery(productId, { pollingInterval: 30000 });
+
   const methods = useForm<IFormInputs>({
     resolver: yupResolver(schema),
   });
-  const [addProduct] = useAddProductMutation();
+  const [updateProduct] = useUpdateProductMutation();
   const [loading, setLoading] = useState(false);
 
   const handleAddProduct: SubmitHandler<IFormInputs> = async (data) => {
     setLoading(true);
     const toastLoading = toast.loading("Adding product...");
     data.discount = Number(data.discount);
+    data._id = fetchedProductData.data._id;
     try {
-      const res = await addProduct(data).unwrap();
+      const res = await updateProduct(data).unwrap();
       if (res.success) {
-        toast.success("Product added successfully!", { id: toastLoading });
+        toast.success("Product updated successfully!", { id: toastLoading });
       }
     } catch (error: any) {
       console.log(error.data);
@@ -72,9 +86,28 @@ const AddProductForm: FC = () => {
     }
   };
 
+  if (isLoading) {
+    return <SLoading />;
+  }
+  if (error) {
+    if (error.status === 404) {
+      return <DataNotFound />;
+    }
+    return (
+      <div>
+        <h4 className="font-semibold md:text-2xl text-xl">
+          Failed to fetch data!
+        </h4>
+        ;
+      </div>
+    );
+  }
+
+  const product = fetchedProductData.data;
+
   return (
     <div id="addProduct">
-      <h4 className="md:text-2xl font-semibold text-xl">Add New Product</h4>
+      <h4 className="md:text-2xl font-semibold text-xl">Update Product</h4>
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(handleAddProduct)}
@@ -82,18 +115,21 @@ const AddProductForm: FC = () => {
         >
           <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
             <SInput
+              defaultValue={product.name}
               inputName="name"
               placeholder="Enter product name"
               label="Name*"
               error={methods.formState.errors.name}
             />
             <SInput
+              defaultValue={product.category}
               inputName="category"
               placeholder="Enter product category"
               label="Category*"
               error={methods.formState.errors.category}
             />
             <SInput
+              defaultValue={product.quantity}
               inputName="quantity"
               placeholder="Enter product quantity"
               label="Quantity*"
@@ -101,12 +137,14 @@ const AddProductForm: FC = () => {
               error={methods.formState.errors.quantity}
             />
             <SInput
+              defaultValue={product.brand}
               inputName="brand"
               placeholder="Enter product brand"
               label="Brand*"
               error={methods.formState.errors.brand}
             />
             <SInput
+              defaultValue={product.price}
               inputName="price"
               placeholder="Enter product price"
               label="Price*"
@@ -114,24 +152,28 @@ const AddProductForm: FC = () => {
               error={methods.formState.errors.price}
             />
             <SInput
+              defaultValue={product.image}
               inputName="image"
               placeholder="Enter product image URL"
               label="Image URL*"
               error={methods.formState.errors.image}
             />
             <SInput
+              defaultValue={product.rating}
               inputName="rating"
               placeholder="Enter product rating URL"
               label="Rating*"
               error={methods.formState.errors.rating}
             />
             <SInput
+              defaultValue={product.tag}
               inputName="tag"
               placeholder="Enter product tag"
               label="Tag"
               error={methods.formState.errors.tag}
             />
             <SInput
+              defaultValue={product.discount}
               inputName="discount"
               placeholder="Enter product discount"
               label="Discount (%)"
@@ -144,6 +186,7 @@ const AddProductForm: FC = () => {
               Description
             </label>
             <Textarea
+              defaultValue={product.description}
               className="md:h-[180px] h-[120px]"
               id="description"
               {...methods.register("description")}
@@ -157,7 +200,7 @@ const AddProductForm: FC = () => {
           </div>
           <div className="mt-4">
             <SButtonSmall fullWidth={true}>
-              {loading ? <SBtnLoading /> : "Add Product"}
+              {loading ? <SBtnLoading /> : "Update"}
             </SButtonSmall>
           </div>
         </form>
@@ -166,4 +209,4 @@ const AddProductForm: FC = () => {
   );
 };
 
-export default AddProductForm;
+export default UpdateProductForm;

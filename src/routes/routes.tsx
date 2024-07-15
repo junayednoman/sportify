@@ -6,6 +6,7 @@ import Login from "@/pages/Login";
 import ManageProducts from "@/pages/ManageProducts";
 import OrderSuccess from "@/pages/OrderSuccess";
 import Products from "@/pages/Products";
+import ProductUpdate from "@/pages/ProductUpdate";
 import ProtectedRoute from "@/pages/ProtectedRoute";
 import Signup from "@/pages/Signup";
 import SingleProduct from "@/pages/SingleProduct";
@@ -21,7 +22,7 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/products",
+        path: "/products/:categoryName",
         element: <Products />,
       },
       {
@@ -33,11 +34,19 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: "/update-product/:productId",
+        element: (
+          <ProtectedRoute>
+            <ProductUpdate />
+          </ProtectedRoute>
+        ),
+      },
+      {
         path: "about",
         element: <AboutPage />,
       },
       {
-        path: "/products/:id",
+        path: "/product/:id",
         element: <SingleProduct />,
       },
       {

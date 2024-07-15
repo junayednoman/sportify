@@ -1,9 +1,18 @@
 import { ReactNode } from "react";
 import { Button } from "./button";
 
-const SButton = ({ children }: { children: ReactNode }) => {
+const SButton = ({
+  children,
+  disable,
+}: {
+  children: ReactNode;
+  disable?: boolean;
+}) => {
   return (
-    <Button className="bg-primaryColor px-7 py-6 lg:text-base hover:bg-[#76a624] ">
+    <Button
+      disabled={disable}
+      className="bg-primaryColor px-7 py-6 lg:text-base hover:bg-[#76a624] "
+    >
       {children}
     </Button>
   );

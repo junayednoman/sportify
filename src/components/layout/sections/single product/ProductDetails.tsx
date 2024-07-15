@@ -5,28 +5,46 @@ import { FaRegEye, FaRegStar, FaStar } from "react-icons/fa6";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import Rating from "react-rating";
 import { Link } from "react-router-dom";
-
-const product = {
-  name: "Pro Elite Cricket Bat",
-  category: "Cricket",
-  quantity: 20,
-  brand: "Sportify",
-  rating: 4.5,
-  price: 150.0,
-  description:
-    "The Pro Elite Cricket Bat is crafted from premium English willow, designed for players who demand power and precision. Its lightweight build and robust sweet spot ensure exceptional performance, whether you're playing in a local match or on the professional stage. The bat features a sleek design, superior grip, and outstanding balance, making it a top choice for cricket enthusiasts.",
-  image:
-    "https://cricketstoreonline.com/cdn/shop/files/2A24410-Aura-Pro__93869.1704735009.600.600.jpg?v=1708097393&width=713",
-  tag: "7% Off",
-  discount: 7,
-};
-
 import { PhotoProvider, PhotoView } from "react-photo-view";
-
 import "react-photo-view/dist/react-photo-view.css";
 import SectionContainer from "../../SectionContainer";
 import SingleProductAdditionalInfo from "./SingleProductAdditionalInfo";
-const ProductDetails = () => {
+import SLoading from "@/components/ux/SLoading";
+import DataNotFound from "@/components/ux/DataNotFound";
+import { useAddCartMutation } from "@/redux/api/cart/cartApi";
+import { useAppSelector } from "@/redux/hooks";
+import { getCurrentToken } from "@/redux/features/authSlice";
+import { jwtDecode } from "jwt-decode";
+import { TCart, TTokenPayload } from "@/types";
+import { useState } from "react";
+import { toast } from "sonner";
+import SBtnLoading from "@/components/ux/SBtnLoading";
+
+const ProductDetails = ({ getProduct }: { getProduct: any }) => {
+  const [buyingQuantity, setBuyingQuantity] = useState(1);
+  const token = useAppSelector(getCurrentToken);
+  const [cartLoading, setCartLoading] = useState(false);
+  const [addCart] = useAddCartMutation();
+  const decoded: TTokenPayload = jwtDecode(token!);
+  const { data, error, isLoading } = getProduct;
+
+  if (isLoading) {
+    return <SLoading />;
+  }
+  if (error) {
+    if (error.status === 404) {
+      return <DataNotFound />;
+    }
+    return (
+      <div>
+        <h4 className="font-semibold md:text-2xl text-xl">
+          Failed to fetch data!
+        </h4>
+        ;
+      </div>
+    );
+  }
+
   const {
     name,
     category,
@@ -38,7 +56,44 @@ const ProductDetails = () => {
     image,
     tag,
     discount,
-  } = product;
+    _id,
+  } = data.data;
+
+  console.log(image);
+
+  // handle add to cart
+  const handleAddToCart = async () => {
+    setCartLoading(true);
+    const totalPrice = discount
+      ? calculateDiscount(price, discount) * buyingQuantity
+      : price * buyingQuantity;
+
+    const cartData: TCart = {
+      user: decoded?.id,
+      products: [
+        {
+          productId: _id,
+          price: totalPrice,
+          quantity: Number(buyingQuantity),
+          image: image,
+          name: name,
+        },
+      ],
+    };
+    console.log(cartData);
+    try {
+      const res = await addCart(cartData).unwrap();
+      if (res.success) {
+        toast.success(res.message || "Product added to cart successfully!");
+        // }
+      }
+    } catch (error: any) {
+      toast.error(error.data.message || "Something went wrong");
+    } finally {
+      setCartLoading(false);
+    }
+  };
+
   return (
     <div>
       <div className="grid lg:grid-cols-2 gap-9">
@@ -55,9 +110,11 @@ const ProductDetails = () => {
           </PhotoProvider>
         </div>
         <div className="md:space-y-5 space-y-4">
-          <div className="inline-block p-2 px-3 rounded-md bg-lightGreenColor text-sm font-semibold">
-            <p>{tag}</p>
-          </div>
+          {tag && (
+            <div className="inline-block p-2 px-3 rounded-md bg-lightGreenColor text-sm font-semibold">
+              <p className="capitalize">{tag}</p>
+            </div>
+          )}
           <h3 className="md:text-4xl text-[27px] font-semibold capitalize">
             {name}
           </h3>
@@ -107,20 +164,26 @@ const ProductDetails = () => {
           <div className="flex items-center gap-2">
             <div>
               <Input
+                onChange={(e) => setBuyingQuantity(e.target.value)}
                 type="number"
                 defaultValue={1}
                 className="w-[50px] text-center text-[15px] h-[46px]"
               />
             </div>
-            <div>
-              <SButton>Add To Cart</SButton>
+            <div
+              onClick={handleAddToCart}
+              className={`${quantity === 0 && "cursor-not-allowed"}`}
+            >
+              <SButton disable={quantity === 0}>
+                {!cartLoading ? "Add To Cart" : <SBtnLoading />}
+              </SButton>
             </div>
             <div className="border p-3 cursor-pointer rounded-md inline-block hover:border-primaryColor hover:bg-primaryColor duration-200 hover:text-white">
               <MdOutlineFavoriteBorder className="text-2xl" />
             </div>
           </div>
           <Link
-            to={`/category/${category.toLocaleLowerCase()}`}
+            to={`/products/${category}`}
             className="text-[12px] text-gray-500 font-semibold uppercase cursor-pointer mt-6 inline-block"
           >
             <strong className="capitalize">Category:</strong> {category}

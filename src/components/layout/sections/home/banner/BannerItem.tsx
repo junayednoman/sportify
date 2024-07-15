@@ -1,4 +1,5 @@
 import SButton from "@/components/ui/SButton";
+import { Link } from "react-router-dom";
 // import image from "../../../../assets/images/banner.jpg";
 type TBannerItemProps = {
   heading: string;
@@ -24,7 +25,9 @@ const BannerItem = ({
           {subHeading}
         </h5>
         <p className="text-white mb-8 md:text-base text-sm">{para}</p>
-        <SButton>{btn}</SButton>
+        <Link to={'/products'}>
+          <SButton>{btn}</SButton>
+        </Link>
       </div>
     </div>
   );

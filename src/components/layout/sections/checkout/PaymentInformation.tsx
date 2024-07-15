@@ -8,8 +8,8 @@ import {
 const PaymentInformation = () => {
   return (
     <div>
-      <h4 className="md:text-2xl font-semibold text-xl">Payment Information</h4>
-      <div className="mt-4">
+      <h4 className="font-semibold text-xl">Payment Information</h4>
+      <div className="mt-2">
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">
             <AccordionTrigger className="bg-lightWhiteColor rounded-md px-3 hover:decoration-0">
