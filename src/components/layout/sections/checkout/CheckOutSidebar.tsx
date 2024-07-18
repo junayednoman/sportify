@@ -26,7 +26,7 @@ const CheckOutSidebar = () => {
         </div>
         <div>
           {products.length &&
-            products.map((product) => (
+            products.map((product: TCartProduct) => (
               <CheckOutProductItem key={product.name} product={product} />
             ))}
         </div>

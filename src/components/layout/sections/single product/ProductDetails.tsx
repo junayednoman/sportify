@@ -154,7 +154,7 @@ const ProductDetails = ({ getProduct }: { getProduct: any }) => {
           <div className="flex items-center gap-2">
             <div>
               <Input
-                onChange={(e) => setBuyingQuantity(e.target.value)}
+                onChange={(e) => setBuyingQuantity(Number(e.target.value))}
                 type="number"
                 defaultValue={1}
                 className="w-[50px] text-center text-[15px] h-[46px]"

@@ -22,7 +22,7 @@ const schema = yup.object().shape({
     .required("Password is required"),
 });
 
-interface IFormInputs {
+export interface ISignUpFormInputs {
   name: string;
   email: string;
   image: string;
@@ -32,10 +32,10 @@ interface IFormInputs {
 const SignUpForm: React.FC = () => {
   const navigate = useNavigate();
   const [signUp] = useSignUpMutation();
-  const methods = useForm<IFormInputs>({
+  const methods = useForm<ISignUpFormInputs>({
     resolver: yupResolver(schema),
   });
-  const onSubmit = async (data: IFormInputs) => {
+  const onSubmit = async (data: ISignUpFormInputs) => {
     const toastLoading = toast.loading("Signing up...");
     try {
       const res = await signUp(data).unwrap();

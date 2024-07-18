@@ -1,27 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import {
-  BaseQueryFn,
-  EndpointBuilder,
-  FetchArgs,
-  FetchBaseQueryError,
-  FetchBaseQueryMeta,
-} from "@reduxjs/toolkit/query";
+import { ISignUpFormInputs } from "@/components/layout/sections/sign up/SignUpForm";
 import { baseApi } from "../baseApi";
-import { TLogin, TUser } from "@/types";
+import { TLogin } from "@/types";
 
 const authApi = baseApi.injectEndpoints({
   endpoints: (
-    builder: EndpointBuilder<
-      BaseQueryFn<
-        string | FetchArgs,
-        unknown,
-        FetchBaseQueryError,
-        {},
-        FetchBaseQueryMeta
-      >,
-      "product",
-      "api"
-    >
+    builder
   ) => ({
     login: builder.mutation({
       query: (userInfo: TLogin) => ({
@@ -31,7 +15,7 @@ const authApi = baseApi.injectEndpoints({
       }),
     }),
     signUp: builder.mutation({
-      query: (userInfo: TUser) => ({
+      query: (userInfo: ISignUpFormInputs) => ({
         url: "/auth/sign-up",
         method: "POST",
         body: userInfo,

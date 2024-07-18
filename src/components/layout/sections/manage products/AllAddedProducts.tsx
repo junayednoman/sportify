@@ -5,6 +5,13 @@ import { useGetProductsQuery } from "@/redux/api/product/productApi";
 import SLoading from "@/components/ux/SLoading";
 import DataNotFound from "@/components/ux/DataNotFound";
 import { TProduct } from "@/types";
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
+
+const isFetchBaseQueryError = (
+  error: unknown
+): error is FetchBaseQueryError => {
+  return typeof error === 'object' && error !== null && 'status' in error;
+};
 
 const AllAddedProducts = () => {
   const { data, isLoading, error } = useGetProductsQuery(
@@ -20,13 +27,22 @@ const AllAddedProducts = () => {
     return <SLoading />;
   }
   if (error) {
-    if (error.status === 404) {
-      return <DataNotFound />;
+    if (isFetchBaseQueryError(error)) {
+      if (error.status === 404) {
+        return <DataNotFound />;
+      }
+      return (
+        <div>
+          <h4 className="font-semibold md:text-2xl text-xl">
+            Failed to fetch data!
+          </h4>
+        </div>
+      );
     }
     return (
       <div>
         <h4 className="font-semibold md:text-2xl text-xl">
-          Failed to fetch data!
+          An unexpected error occurred!
         </h4>
       </div>
     );

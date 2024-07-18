@@ -14,6 +14,13 @@ import SBtnLoading from "@/components/ux/SBtnLoading";
 import { useParams } from "react-router-dom";
 import SLoading from "@/components/ux/SLoading";
 import DataNotFound from "@/components/ux/DataNotFound";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
+
+const isFetchBaseQueryError = (
+  error: unknown
+): error is FetchBaseQueryError => {
+  return typeof error === "object" && error !== null && "status" in error;
+};
 
 // Form values interface
 export interface IFormInputs {
@@ -89,13 +96,22 @@ const UpdateProductForm: FC = () => {
     return <SLoading />;
   }
   if (error) {
-    if (error.status === 404) {
-      return <DataNotFound />;
+    if (isFetchBaseQueryError(error)) {
+      if (error.status === 404) {
+        return <DataNotFound />;
+      }
+      return (
+        <div>
+          <h4 className="font-semibold md:text-2xl text-xl">
+            Failed to fetch data!
+          </h4>
+        </div>
+      );
     }
     return (
       <div>
         <h4 className="font-semibold md:text-2xl text-xl">
-          Failed to fetch data!
+          An unexpected error occurred!
         </h4>
       </div>
     );

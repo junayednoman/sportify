@@ -18,13 +18,10 @@ const CheckOutProductItem = ({ product }: { product: TCartItemProps }) => {
   const user = useAppSelector(getCurrentUser);
   const [loading, setLoading] = useState(false);
 
-  const [quantityToUpdate, setQuantityToUpdate] = useState(quantity);
-
 
   // handle update cart product quantity
   const handleIncreaseQuantity = async (updatedQuantity: number) => {
     setLoading(true);
-    setQuantityToUpdate(updatedQuantity);
     const pricePerProduct = price / quantity;
     const updatedPrice = pricePerProduct * updatedQuantity;
     const updatedData = {

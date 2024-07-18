@@ -25,6 +25,7 @@ const schema = Yup.object().shape({
   town: Yup.string().required("Town/City is required"),
   street_address: Yup.string().required("Street address is required"),
   postcode: Yup.string().required("Postcode/ZIP is required"),
+  note: Yup.string(),
 });
 
 const BillingInfoForm = () => {
@@ -41,7 +42,6 @@ const BillingInfoForm = () => {
   if (cart.products.length < 1) {
     return <Navigate to={"/products/all"} replace />;
   }
-
 
   // handle place order
   const handleCheckout = async (data: FieldValues) => {

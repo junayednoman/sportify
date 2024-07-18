@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import SButtonSmall from "@/components/ui/SButtonSmall";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, FormEvent, SetStateAction } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import ProductFilter from "./filter/ProductFilter";
 import { MdOutlineFilterAlt } from "react-icons/md";
@@ -29,9 +29,11 @@ const ProductsSearchar = ({
   sortBy,
   setSortBy,
 }: TProductsSearcharProps) => {
-  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSearch = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSearchText(e.target.search.value);
+    const form = e.target as HTMLFormElement;
+    const input = form.elements.namedItem("search") as HTMLInputElement;
+    setSearchText(input.value);
   };
 
   return (
