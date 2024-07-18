@@ -25,7 +25,7 @@ const BannerItem = ({
           {subHeading}
         </h5>
         <p className="text-white mb-8 md:text-base text-sm">{para}</p>
-        <Link to={'/products'}>
+        <Link to={'/products/all'}>
           <SButton>{btn}</SButton>
         </Link>
       </div>

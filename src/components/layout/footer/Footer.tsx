@@ -31,7 +31,7 @@ const Footer = () => {
               important links
             </h4>
             <div className="flex flex-col font-medium gap-1 lg:text-base text-sm">
-              <Link to={"/products"}>all products</Link>
+              <Link to={"/products/all"}>all products</Link>
               <Link to={"/manage-products"}>manage products</Link>
               <Link to={"/about"}>about us</Link>
               <CartModal>cart</CartModal>
@@ -40,9 +40,9 @@ const Footer = () => {
           <div className="capitalize md:w-[48%] xl:w-[20%] lg:w-[22%] w-full">
             <h4 className="lg:text-2xl font-semibold mb-3 text-xl">Legal</h4>
             <div className="flex flex-col font-medium gap-1 lg:text-base text-sm">
-              <Link to={"/products"}>terms & conditions</Link>
-              <Link to={"/manage-products"}>privacy policy</Link>
-              <Link to={"/about"}>return policy</Link>
+              <Link to={"/"}>terms & conditions</Link>
+              <Link to={"/"}>privacy policy</Link>
+              <Link to={"/"}>return policy</Link>
             </div>
           </div>
           <div className="capitalize md:w-[48%] xl:w-[20%] lg:w-[22%] w-full">

@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
-import { FaRegStar, FaStar } from "react-icons/fa6";
-import Rating from "react-rating";
 import SCheckbox from "@/components/ui/SCheckbox";
+import SStarRating from "@/components/ui/SStarRating";
 const ratings = [5, 4, 3, 2, 1];
 type TRatingFilterProps = {
   selectedRatings: number[];
@@ -35,13 +34,7 @@ const FilterByRating = ({
             htmlFor={rating.toString()}
             className="text-sm capitalize font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
           >
-            <Rating
-              className="readonly_rating"
-              emptySymbol={<FaRegStar style={{ color: "#83B828" }} size={15} />}
-              fullSymbol={<FaStar style={{ color: "#83B828" }} size={15} />}
-              initialRating={rating}
-              readonly
-            />
+            <SStarRating value={rating} />
           </label>
         </div>
       ))}

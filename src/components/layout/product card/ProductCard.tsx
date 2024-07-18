@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import Rating from "react-rating";
-import { FaRegStar, FaStar } from "react-icons/fa6";
 import { TProduct } from "@/types";
+import SStarRating from "@/components/ui/SStarRating";
 
 const ProductCard = ({ product }: { product: TProduct }) => {
   const {
@@ -49,14 +48,7 @@ const ProductCard = ({ product }: { product: TProduct }) => {
           ...
         </p>
         <div className="flex items-center justify-between font-semibold my-2">
-          {/* <p>{rating}</p> */}
-          <Rating
-            className="readonly_rating"
-            emptySymbol={<FaRegStar style={{ color: "#83B828" }} size={15} />}
-            fullSymbol={<FaStar style={{ color: "#83B828" }} size={15} />}
-            initialRating={rating}
-            readonly
-          />
+          <SStarRating value={rating!} />
           <p>${price}</p>
         </div>
         <Link

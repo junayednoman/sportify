@@ -39,7 +39,7 @@ const BillingInfoForm = () => {
   const [placeOrder] = usePlaceOrderMutation();
 
   if (cart.products.length < 1) {
-    return <Navigate to={"/products"} replace />;
+    return <Navigate to={"/products/all"} replace />;
   }
 
 

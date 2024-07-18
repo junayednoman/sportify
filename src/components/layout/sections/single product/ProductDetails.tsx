@@ -1,9 +1,8 @@
 import { Input } from "@/components/ui/input";
 import SButton from "@/components/ui/SButton";
 import { calculateDiscount } from "@/lib/utils";
-import { FaRegEye, FaRegStar, FaStar } from "react-icons/fa6";
+import { FaRegEye } from "react-icons/fa6";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
-import Rating from "react-rating";
 import { Link } from "react-router-dom";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
@@ -19,6 +18,7 @@ import { TCart, TTokenPayload } from "@/types";
 import { useState } from "react";
 import { toast } from "sonner";
 import SBtnLoading from "@/components/ux/SBtnLoading";
+import SStarRating from "@/components/ui/SStarRating";
 
 const ProductDetails = ({ getProduct }: { getProduct: any }) => {
   const [buyingQuantity, setBuyingQuantity] = useState(1);
@@ -57,7 +57,6 @@ const ProductDetails = ({ getProduct }: { getProduct: any }) => {
     discount,
     _id,
   } = data.data;
-
 
   // handle add to cart
   const handleAddToCart = async () => {
@@ -117,13 +116,7 @@ const ProductDetails = ({ getProduct }: { getProduct: any }) => {
           </h3>
           {/* showing rating */}
           <div className="flex items-center gap-2">
-            <Rating
-              className="readonly_rating"
-              emptySymbol={<FaRegStar style={{ color: "#83B828" }} size={19} />}
-              fullSymbol={<FaStar style={{ color: "#83B828" }} size={19} />}
-              initialRating={rating}
-              readonly
-            />
+            <SStarRating value={rating!} />
             <p className="text-sm text-gray-400">(32 reviews)</p>
           </div>
           {/* product price */}
