@@ -1,11 +1,11 @@
-# 🏅 Sportify Front-End
+# 🏀 Sportify Front-End
 
 ## Overview
-Sportify is a comprehensive e-commerce platform offering a wide range of sporting equipment and accessories. This front-end application is built using React and provides a seamless and user-friendly interface for customers to browse, filter, and purchase products.
+Sportify is a comprehensive e-commerce platform offering various sporting equipment and accessories. This front-end application is built using React and provides a seamless and user-friendly interface for customers to browse, filter, and purchase products.
 
 ## Features
 - 🎨 **Responsive Design**: Ensures compatibility across various devices (desktop, tablet, mobile).
-- 🧭 **Navigation**: Includes a dynamic navbar and footer with essential links and social media icons.
+- 🧭 **Navigation**: A dynamic navbar and footer with essential links and social media icons is included.
 - 🏠 **Home Page**: Features a carousel for promotions, a section for the latest products, and a category section.
 - 📖 **About Us Page**: Information about the company, mission, vision, team, and store locations.
 - 🛍️ **All Products Page**: Displays all products with search, filter, and sort functionalities.
