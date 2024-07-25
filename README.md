@@ -2,6 +2,7 @@
 
 ## Overview
 Sportify is a comprehensive e-commerce platform offering various sporting equipment and accessories. This front-end application is built using React and provides a seamless and user-friendly interface for customers to browse, filter, and purchase products.
+[Live View](https://go-sportify.vercel.app)
 
 ## Features
 - 🎨 **Responsive Design**: Ensures compatibility across various devices (desktop, tablet, mobile).
